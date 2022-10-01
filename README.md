@@ -41,7 +41,7 @@ Before following the steps, please ensure you have node and git installed on you
 -   Firstly, download the repository using the command
 
 ```
-git clone <my-repo-link>
+git clone https://github.com/rachmaninoff8267/animflix.git
 ```
 
 -   Next, to download the dependencies, run:
