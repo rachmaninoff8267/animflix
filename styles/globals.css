@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;300;400;600;700;800;900&display=swap");
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #232638;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1c50d4;
+}
+
+@layer base {
+    html {
+        font-family: "Nunito Sans", sans-serif;
+    }
+
+    body {
+        @apply bg-[#090a10] text-[rgba(255,238,242,0.87)] overflow-x-hidden;
+    }
+
+    header {
+        @apply fixed top-0 w-full px-[0.95em] py-[0.75em] md:px-[1.75em] md:py-[1.2em] z-[9999] transition duration-200 ease-in;
+    }
+
+    input::-webkit-input-placeholder {
+        @apply opacity-30;
+    }
+}
+
+@layer components {
+    .navLink {
+        @apply text-[rgba(255,238,242,0.35)] hover:text-[rgb(255,238,242,0.87)] transition-[color] duration-300 ease-in cursor-pointer;
+    }
+    .addBgGradientBefore::before,
+    .addFixedBgGradient::before {
+        content: "";
+        left: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 65%;
+        background-image: linear-gradient(to top, rgb(9, 10, 16), transparent);
+        pointer-events: none;
+    }
+    .addBgGradientAfter::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 10%;
+        background-image: linear-gradient(
+            to bottom,
+            rgba(9, 10, 16, 0.6),
+            transparent
+        );
+        pointer-events: none;
+    }
+    .bannerDisplay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-image: linear-gradient(
+            to right,
+            rgba(9, 10, 16, 0.95),
+            rgba(9, 10, 16, 0.75),
+            rgba(9, 10, 16, 0.55),
+            rgba(9, 10, 16, 0.35),
+            transparent
+        );
+    }
+    .paddingElements {
+        @apply px-[0.95em] md:px-[1.75em];
+    }
+    .hideScroll::-webkit-scrollbar {
+        display: none;
+    }
+    .hideScroll {
+        scrollbar-width: none;
+    }
+    .gridDisplay {
+        display: grid;
+        gap: 1.25em;
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    }
+    /* Loading indicator */
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-dual-ring::after {
+        content: " ";
+        display: block;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #1c50d4;
+        border-color: #1c50d4 transparent #1c50d4 transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+    }
+    @media only screen and (max-width: 350px) {
+        .gridDisplay {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1em;
+        }
+    }
+    .cardHover:hover .removeOnHover {
+        @apply opacity-0;
+    }
+}
